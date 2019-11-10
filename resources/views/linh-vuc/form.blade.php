@@ -1,38 +1,44 @@
-@extends('layout')
+@extends('layout_New')
 @section('css')
-<link href="{{ asset ('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{ asset ('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{ asset ('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" /> 
+<link href="{{ asset ('assets/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
+
 @endsection
 @section('main-content')
 <div class="row">
-    <div class="col-12">
+    <div class="col-lg-6">
         <div class="card">
+
+            <div class="card-header">@if(isset($linhvuc)) Cập Nhật Lĩnh Vực @else Thêm Lĩnh Vực @endif </div>
+
+
+
             <div class="card-body">
-                <h4 class="mb-3 header-title">@if(isset($linhvuc)) Cập Nhật Lĩnh Vực @else Thêm Lĩnh Vực @endif</h4>
 
-            @if(isset($linhvuc))<form action="{{ route('linh-vuc.xu-ly-cap-nhat' , ['id' =>$linhvuc->id])}}" method="POST"> @else <form action="{{ route('linh-vuc.xu-ly-them-moi')}}" method="POST">   @endif
-                @csrf
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Tên Lĩnh Vực</label>
-                    <input type="type" class="form-control" id="ten_linh_vuc" name="ten_linh_vuc" placeholder="Tên Lĩnh Vực" @if(isset($linhvuc)) value="{{$linhvuc->ten_linh_vuc}}" @endif>
-                    </div>
-                    <button type="submit" class="btn btn-info btn-xs" id="sa-success" >@if(isset($linhvuc)) Cập Nhật @else Thêm @endif</button>
-                </form>
+                <hr>
+                @if(isset($linhvuc))
+                <form action="{{ route('linh-vuc.xu-ly-cap-nhat' , ['id' =>$linhvuc->id])}}" method="post" novalidate="novalidate"> @else <form action="{{ route('linh-vuc.xu-ly-them-moi')}}" method="POST" novalidate="novalidate">
+                        @endif
+                        @csrf
+                        <div class="form-group has-success">
+                            <label for="cc-name" class="control-label mb-1" name="ten_linh_vuc" >Tên Lĩnh Vực</label>
+                            <input id="cc-name" name="ten_linh_vuc" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Tên Lĩnh Vực" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+                        </div>
 
-            </div> <!-- end card-body-->
-        </div> <!-- end card-->
+                        <div>
+
+                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                <span id="payment-button-amount">@if(isset($linhvuc)) Cập Nhật @else Thêm @endif</span>
+
+                            </button>
+                        </div>
+                    </form>
+            </div>
+        </div>
     </div>
-    <!-- end row-->
 </div>
 @endsection
 @section('js')
-   <!-- Sweet Alerts js -->
-   <script src=" {{ asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
-   <!-- Sweet alert init js-->
-   <script src="{{ asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
-
-   <!-- App js-->
-   <script src="{{ asset('assets/js/app.min.js')}}"></script> 
 @endsection

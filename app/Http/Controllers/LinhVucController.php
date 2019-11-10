@@ -15,7 +15,7 @@ class LinhVucController extends Controller
     public function index()
     {
         $linhvuc = DB::table('linhvuc')->get();
-        return view('linh-vuc.Ds_linh_vuc',compact('linhvuc'));
+        return view('linh-vuc.Danh_sach_linh_vuc',compact('linhvuc'));
     }
 
     /**

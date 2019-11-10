@@ -36,25 +36,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @for($i = 1 ; $i < 50 ; $i++)
+                        @foreach($cauhoi as $cau)
                             <tr id="1">
-                                <td><span class="tabledit-span tabledit-identifier"></span><input class="tabledit-input tabledit-identifier" type="hidden" name="id_cau_hoi" value=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">Lorem ipsum dolor sit amet consectetur, adipisicing  dignissimos libero asperiores enim et rem amet, dolorem iste vitae facere pariatur atque magnam sapiente alias?</span><input class="tabledit-input form-control form-control-sm" type="text" name="col1" value="Sonya Frost" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">Software Engineer</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="Software Engineer" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">Edinburgh</span><input class="tabledit-input form-control form-control-sm" type="text" name="col3" value="Edinburgh" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">23</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="23" style="display: none;" disabled=""></td>
-                                <td>2008/12/13</td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">$103,600</span><input class="tabledit-input form-control form-control-sm" type="text" name="col6" value="$103,600" style="display: none;" disabled=""></td>
-                                <td>      A     </td>
+                                <td><span class="tabledit-span tabledit-identifier">{{$cau -> id}}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id_cau_hoi" value=""></td>
+                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span"> {{$cau -> noi_dung }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col1" value="Sonya Frost" style="display: none;" disabled=""></td>
+                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> linh_vuc_id}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="Software Engineer" style="display: none;" disabled=""></td>
+                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> phuong_an_a}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col3" value="Edinburgh" style="display: none;" disabled=""></td>
+                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span"></span>{{$cau -> phuong_an_b}}<input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="23" style="display: none;" disabled=""></td>
+                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> phuong_an_c}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col6" value="$103,600" style="display: none;" disabled=""></td>
+                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> phuong_an_d}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col6" value="$103,600" style="display: none;" disabled=""></td>
+                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> dap_an}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col6" value="$103,600" style="display: none;" disabled=""></td>
                                 <td>
-                                    <a href="#" class="btn btn-success waves-effect waves-light">
+                                    <a href="{{ route('cau-hoi.cap-nhat', ['id' => $cau->id])}}" class="btn btn-success waves-effect waves-light">
                                         <i class="fe-edit"></i></a>
-                                    <a href="#"class="btn btn-danger waves-effect waves-light">
+                                    <a href="{{ route('cau-hoi.xoa', ['id' => $cau->id])}}"class="btn btn-danger waves-effect waves-light">
                                         <i class="fe-trash-2"></i>
                                     </a>
                                 </td> 
                             </tr>
-                        @endfor
+                        @endforeach
                         </tbody>
                     </table>
 

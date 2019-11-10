@@ -17,56 +17,58 @@
                                 <h2 class="header-title">THÊM CÂU HỎI</h2> 
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <form>
+                                        <form action="{{route('cau-hoi.xu-ly-them-moi" method="POST"}}">
                                             <div class="form-group mb-3">
-                                                <label for="simpleinput">ID</label>
-                                                <input type="text" id="simpleinput" class="form-control">
+                                                <!-- <label for="simpleinput">ID</label>
+                                                <input type="text" id="simpleinput" class="form-control"> -->
                                             </div>
                                             <!-- hdf -->
                                             <div class="form-group mb-3">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <label class="header-title">Lĩnh Vực</label>
-                                                        foreach($linhvuc as $lv)
-                                                        <select class="custom-select ">
-                                                            <option selected>Chọn Lĩnh Vực</option>
-                                                            <option value="{{$lv->id}}"></option>
+                                                        
+                                                        <select class="custom-select " >
+                                                        @foreach($linhvuc as $lv)
+                                                            <option  value="{{$lv->id}}" id="linh_vuc_id" selected>{{$lv -> ten_linh_vuc}}</option>
+                                                            @endforeach
                                                         </select>
-                                                       endforeach
+                                                       
                                                     </div>
                                                 </div> <!-- end col -->
                                             </div>
                                             <!-- sdasd -->
                                             <div class="form-group mb-3">
                                                 <label for="example-password">Nội Dung Câu Hỏi</label>
-                                                <input type="text" id="example-password" class="form-control" placeholder="Nội dung">
+                                                <input type="text" id="noi_dung" class="form-control" placeholder="Nội dung">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="example-palaceholder">Phương Án A</label>
-                                                <input type="text" id="example-palaceholder" class="form-control" placeholder="Phương Án A">
+                                                <input type="text" id="phuong_an_a" class="form-control" placeholder="Phương Án A">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="example-textarea">Phương Án B</label>
-                                                <input type="text" id="example-palaceholder" class="form-control" placeholder="Phương Án B">
+                                                <input type="text" id="phuong_an_b" class="form-control" placeholder="Phương Án B">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="example-readonly">Phương Án C</label>
-                                                <input type="text" id="example-readonly" class="form-control"  placeholder="Phương Án C">
+                                                <input type="text" id="phuong_an_c" class="form-control"  placeholder="Phương Án C">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="example-disable">Phương Án D</label>
-                                                <input type="text" class="form-control" id="example-disable"  placeholder="Phương Án D">
+                                                <input type="text" class="form-control" id="phuong_an_d"  placeholder="Phương Án D">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="example-static">Đáp Án</label>
-                                                <input type="text"  class="form-control" id="example-static" placeholder="Đáp Án">
+                                                <input type="text"  class="form-control" id="dap_an" placeholder="Đáp Án">
                                             </div>
-                                            <button type="button" class="btn btn-warning width-lg waves-effect waves-light" style="width:626px; background-color:#5089de;">Thêm </button>                                        </form>
+                                            <button type="button" class="btn btn-warning width-lg waves-effect waves-light" style="width:626px; background-color:#5089de;">Thêm </button>   
+                                        </form>
                                     </div> <!-- end col -->
                             </div> <!-- end card-body -->
                         </div> <!-- end card -->

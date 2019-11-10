@@ -14,8 +14,8 @@ class CauHoiController extends Controller
      */
     public function index()
     {
-        //
-        return view('Cau-Hoi.Ds_Cau_Hoi');
+        $cauhoi = CauHoi::all();
+        return view('Cau-Hoi.Ds_Cau_Hoi',compact('cauhoi'));
     }
 
     /**
@@ -26,7 +26,8 @@ class CauHoiController extends Controller
     public function create()
     {
         //
-        $linhvuc = LinhVuc::get();
+
+        $linhvuc = new LinhVuc;
         return view('Cau-Hoi.form-them',compact('linhvuc'));
     }
 
@@ -38,7 +39,18 @@ class CauHoiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $linhvuc = new LinhVuc;
+        $linhvuc->id = $request->id;
+        $cauhoi = new CauHoi();
+        $cauhoi ->noi_dung = $request ->noi_dung;
+        $cauhoi ->linh_vuc_id = $request ->linh_vuc_id;
+        $cauhoi ->phuong_an_a = $request ->phuong_an_a;
+        $cauhoi ->phuong_an_b = $request ->phuong_an_b;
+        $cauhoi ->phuong_an_c = $request ->phuong_an_c;
+        $cauhoi ->phuong_an_d = $request ->phuong_an_d;
+        $cauhoi ->dap_an = $request ->dap_an;
+        $cauhoi ->save();
+        return redirect()->route('cau-hoi.danh-sach');
     }
 
     /**
@@ -60,7 +72,8 @@ class CauHoiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cauhoi = CauHoi::find($id);
+        return view('Cau-Hoi.form-them',compact('cauhoi'));
     }
 
     /**
@@ -72,7 +85,17 @@ class CauHoiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cauhoi = CauHoi::find($id);
+        $cauhoi ->noi_dung = $request ->noi_dung;
+        $cauhoi ->linh_vuc_id = $request ->linh_vuc_id;
+        $cauhoi ->phuong_an_a = $request ->phuong_an_a;
+        $cauhoi ->phuong_an_b = $request ->phuong_an_b;
+        $cauhoi ->phuong_an_c = $request ->phuong_an_c;
+        $cauhoi ->phuong_an_d = $request ->phuong_an_d;
+        $cauhoi ->dap_an = $request ->dap_an;
+        $cauhoi ->save();
+
+        return redirect()->route('cau-hoi.danh-sach');
     }
 
     /**
@@ -83,6 +106,8 @@ class CauHoiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cauhoi = CauHoi::find($id);
+        $cauhoi->Delete();
+        return redirect() ->route('cau-hoi.danh-sach');
     }
 }
