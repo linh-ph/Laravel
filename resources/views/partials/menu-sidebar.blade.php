@@ -8,7 +8,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="has-sub">
+                        <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -25,33 +25,78 @@
                                     <a href="index4.html">Dashboard 4</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
-                        </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
-                        </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
-                        </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li class="active">
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                            <a href="{{route('linh-vuc.danh-sach')}}">
+                                <i ></i>Lĩnh Vực</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
+                                <i ></i>Câu Hỏi</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="login.html">Login</a>
+                                    <a href="index.html">Danh Sách</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">Tìm Câu Hỏi Theo Lĩnh Vực</a>
+                                </li>
+                              
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="form.html">
+                                <i ></i>Người Chơi</a>
+                        </li>
+                         <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i></i>Gói Credit</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="index.html">Xem Các Gói</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">Lịch Sử Mua</a>
+                                </li>
+                              
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i ></i>Lượt Chơi</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="index.html">Các Lượt Chơi</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">Chi Tiết Lượt Chơi</a>
+                                </li>
+                              
+                            </ul>
+                        </li>
+                        <li >
+                            <a href="map.html">
+                                <i ></i>Quản Trị Viên</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i ></i>Cấu Hình Câu Hỏi</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i ></i>Cấu Hình App</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i></i>Cấu Hình Trợ Giúp</a>
+                        </li>
+
+
+                        <!-- <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Lĩnh Vực</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="login.html"></a>
                                 </li>
                                 <li>
                                     <a href="register.html">Register</a>
@@ -60,8 +105,8 @@
                                     <a href="forget-pass.html">Forget Password</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="has-sub">
+                        </li> -->
+                        <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-desktop"></i>UI Elements</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -99,7 +144,7 @@
                                     <a href="typo.html">Typography</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>

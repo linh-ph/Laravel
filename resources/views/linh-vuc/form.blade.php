@@ -27,8 +27,8 @@
 
                         <div>
 
-                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                <i class="fa fa-lock fa-lg"></i>&nbsp;
+                            <button id="payment-button" type="submit" class="btn btn-outline-primary btn-lg btn-block">
+                                <i class="fa fa-check"></i>&nbsp;
                                 <span id="payment-button-amount">@if(isset($linhvuc)) Cập Nhật @else Thêm @endif</span>
 
                             </button>

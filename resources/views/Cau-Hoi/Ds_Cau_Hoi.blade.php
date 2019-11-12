@@ -1,93 +1,115 @@
-
-@extends('layout')
+@extends('layout_New')
 @section('css')
-    <!-- third party css -->
-        <link href="{{ asset ('assets/libs/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset ('assets/libs/datatables/responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset ('assets/libs/datatables/buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset ('assets/libs/datatables/select.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
-
-        <!-- App css -->
-        <link href="{{ asset ('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset ('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset ('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset ('assets/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
 @endsection
 @section('main-content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h2 >DANh SÁCH CÂU HỎI</h2>
-                    <a href="{{ route('cau-hoi.them-moi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm Câu Hỏi</a><br><br>
 
-                        <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>NỘI DUNG</th>
-                                <th>LĨNH VỰC</th>
-                                <th>PHƯƠNG ÁN A</th>
-                                <th>PHƯƠNG ÁN B</th>
-                                <th>PHƯƠNG ÁN C</th>
-                                <th>PHƯƠNG ÁN D</th>
-                                <th>ĐÁP ÁN</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($cauhoi as $cau)
-                            <tr id="1">
-                                <td><span class="tabledit-span tabledit-identifier">{{$cau -> id}}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id_cau_hoi" value=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span"> {{$cau -> noi_dung }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col1" value="Sonya Frost" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> linh_vuc_id}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="Software Engineer" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> phuong_an_a}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col3" value="Edinburgh" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span"></span>{{$cau -> phuong_an_b}}<input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="23" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> phuong_an_c}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col6" value="$103,600" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> phuong_an_d}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col6" value="$103,600" style="display: none;" disabled=""></td>
-                                <td class="tabledit-view-mode" style="cursor: pointer;"><span class="tabledit-span">{{$cau -> dap_an}}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col6" value="$103,600" style="display: none;" disabled=""></td>
-                                <td>
-                                    <a href="{{ route('cau-hoi.cap-nhat', ['id' => $cau->id])}}" class="btn btn-success waves-effect waves-light">
-                                        <i class="fe-edit"></i></a>
-                                    <a href="{{ route('cau-hoi.xoa', ['id' => $cau->id])}}"class="btn btn-danger waves-effect waves-light">
-                                        <i class="fe-trash-2"></i>
-                                    </a>
-                                </td> 
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
 
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- DATA TABLE -->
+        <h3 class="title-5 m-b-35">Lĩnh Vực</h3>
+        <div class="table-data__tool">
+            <!-- <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                    <select class="js-select2" name="property">
+                        <option selected="selected">All Properties</option>
+                        <option value="">Option 1</option>
+                        <option value="">Option 2</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <div class="rs-select2--light rs-select2--sm">
+                    <select class="js-select2" name="time">
+                        <option selected="selected">Today</option>
+                        <option value="">3 Days</option>
+                        <option value="">1 Week</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <button class="au-btn-filter">
+                    <i class="zmdi zmdi-filter-list"></i>filters</button>
+            </div> -->
+            <div class="table-data__tool-right">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small" type="">
+                    <a href="{{ route('linh-vuc.them-moi')}}" class="zmdi zmdi-plus" name="them_linh_vuc">add item</a></button>
+                <!-- <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                    <select class="js-select2" name="type">
+                        <option selected="selected">Export</option>
+                        <option value="">Option 1</option>
+                        <option value="">Option 2</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div> -->
+            </div>
+        </div>
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2">
+                <thead>
+                    <tr>
+                        <th>
+                            <label class="au-checkbox">
+                                <input type="checkbox">
+                                <span class="au-checkmark"></span>
+                            </label>
+                        </th>
+                        <th>ID</th>
+                        <th>NỘI DUNG</th>
+                        <th>LĨNH VỰC</th>
+                        <th>PHƯƠNG ÁN A</th>
+                        <th>PHƯƠNG ÁN B</th>
+                        <th>PHƯƠNG ÁN C</th>
+                        <th>PHƯƠNG ÁN D</th>
+                        <th>ĐÁP ÁN</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($cauhoi as $ch)
+                    <tr class="tr-shadow">
+                        <td>
+                            <label class="au-checkbox">
+                                <input type="checkbox">
+                                <span class="au-checkmark"></span>
+                            </label>
+                        </td>
+                        <td>{{$ch->id}}</td>
+
+                        <td>{{$ch->LinhVuc()-ten_linh_vuc>}}<td>
+                        <td>{{$ch-phuong_an_a}}<td>
+                        <td>{{$ch-phuong_an_b}}<td>
+                        <td>{{$ch-phuong_an_c}}<td>
+                        <td>{{$ch-phuong_an_d}}<td>
+                        <td>{{$ch-dap_an}}<td>
+                        <td>
+                            <div class="table-data-feature">
+                                <a href="{{ route('cau-hoi.cap-nhat', ['id' => $ch->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="zmdi zmdi-edit"></i></a>
+                                <a href="{{ route('cau-hoi.xoa', ['id' => $ch->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </a>
+                                <!-- <button href="{{ route('linh-vuc.cap-nhat', ['id' => $lv->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i href="{{ route('linh-vuc.cap-nhat', ['id' => $lv->id])}}" class="zmdi zmdi-edit"></i>
+                                </button> -->
+                                <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                    <i class="zmdi zmdi-more"></i>
+                                </button> -->
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="spacer"></tr>
+
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <!-- END DATA TABLE -->
     </div>
-                <!-- end row-->
+</div>
 @endsection
 @section('js')
-<div class="rightbar-overlay"></div>
 
-<!-- Vendor js -->
-<script src="assets/js/vendor.min.js"></script>
-
-<!-- third party js -->
-<script src="{{ asset ('assets/libs/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/dataTables.bootstrap4.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/dataTables.buttons.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/buttons.html5.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/buttons.flash.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/buttons.print.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/dataTables.keyTable.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/datatables/dataTables.select.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
-<script src="{{ asset ('assets/libs/pdfmake/vfs_fonts.js')}}"></script>
-<!-- third party js ends -->
-
-<!-- Datatables init -->
-<script src="{{ asset ('assets/js/pages/datatables.init.js')}}"></script>
-
-<!-- App js-->
-<script src="{{ asset ('assets/js/app.min.js')}}"></script>
 @endsection
