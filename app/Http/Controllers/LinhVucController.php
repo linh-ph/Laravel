@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\LinhVuc;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ThemLinhVucRequest;
+use App\Http\Requests\UpdateLinhVucRequest;
+
 class LinhVucController extends Controller
 {
     /**
@@ -14,8 +17,9 @@ class LinhVucController extends Controller
      */
     public function index()
     {
-        $linhvuc = DB::table('linhvuc')->get();
-        return view('linh-vuc.Danh_sach_linh_vuc',compact('linhvuc'));
+        // $linhvuc = DB::table('linh_vuc')->get();
+        $linhvuc = LinhVuc::all();
+        return view('linh-vuc.danh_sach',compact('linhvuc'));
     }
 
     /**
@@ -26,7 +30,7 @@ class LinhVucController extends Controller
     public function create()
     {
         // Form thêm mới
-        return view('linh-vuc.form');
+        return view('linh-vuc.form_them');
     }
 
     /**
@@ -35,14 +39,14 @@ class LinhVucController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ThemLinhVucRequest $request)
     {
         //Xử lý thêm mới    
-        $linhvuc = new LinhVuc;
+        $linhvuc = new LinhVuc();
         $linhvuc->ten_linh_vuc = $request->ten_linh_vuc;
         $linhvuc->save();
 
-        return redirect()->route('linh-vuc.danh-sach');
+        return redirect()->route('linh-vuc.danh-sach')->with(['message'=>'Đã Thêm']);
     }
 
     /**
@@ -66,8 +70,8 @@ class LinhVucController extends Controller
     {
         //
         $linhvuc = LinhVuc::find($id);
-        return view('linh-vuc.form',compact('linhvuc'));
-
+        return view('linh-vuc.form_them',compact('linhvuc'));
+        
     }
 
     /**
@@ -77,14 +81,15 @@ class LinhVucController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateLinhVucRequest $request, $id)
     {
         //
         $linhvuc = LinhVuc::find($id);
         $linhvuc->ten_linh_vuc = $request->ten_linh_vuc;
+        
         $linhvuc->save();
 
-        return redirect()->route('linh-vuc.danh-sach');
+        return redirect()->route('linh-vuc.danh-sach')->with(['message'=>'Cập Nhật Thành Công!']);
     }
 
     /**
@@ -96,7 +101,7 @@ class LinhVucController extends Controller
     public function destroy($id)
     {
         $linhvuc = LinhVuc::find($id);
-        $linhvuc->forceDelete();
-        return redirect()->route('linh-vuc.danh-sach');
+        $linhvuc->delete();
+        return redirect()->route('linh-vuc.danh-sach')->with(['message'=>'Success !! Xóa Thành Công']);
     }
 }

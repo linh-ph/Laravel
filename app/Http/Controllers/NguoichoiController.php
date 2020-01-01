@@ -7,15 +7,15 @@ use App\NguoiChoi;
 
 class NguoichoiController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $nguoichoi = NguoiChoi::all();
-        return view('nguoi-choi.ds_nguoi-choi');
+        $nguoiChoi = NguoiChoi::all();
+        return view('nguoi-choi.danh_sach', compact('nguoiChoi'));
     }
 
     /**
@@ -25,9 +25,9 @@ class NguoichoiController extends Controller
      */
     public function create()
     {
-        
-        
-        return view('nguoi-choi.Them_nguoi-choi');
+
+
+        return view('nguoi-choi.form_them');
     }
 
     /**
@@ -38,17 +38,17 @@ class NguoichoiController extends Controller
      */
     public function store(Request $request)
     {
-         
-        
-        $nguoichoi = new NguoiChoi();
-        $nguoichoi ->ten_dang_nhap = $request ->ten_dang_nhap;
-        $nguoichoi ->mat_khau = $request ->mat_khau;
-        $nguoichoi ->email = $request ->email;
-        $nguoichoi ->hinh_dai_dien = $request ->hinh_dai_dien;
-        $nguoichoi ->diem_cao_nhat = $request ->diem_cao_nhat;
-        $nguoichoi ->credit = $request ->credit;
-        
-        $nguoichoi ->save();
+
+
+        $nguoichoi = new NguoiChoi;
+        $nguoichoi->ten_dang_nhap = $request->ten_dang_nhap;
+        $nguoichoi->mat_khau = $request->mat_khau;
+        $nguoichoi->email = $request->email;
+        $nguoichoi->hinh_dai_dien = $request->hinh_dai_dien;
+        $nguoichoi->diem_cao_nhat = $request->diem_cao_nhat;
+        $nguoichoi->credit = $request->credit;
+
+        $nguoichoi->save();
         return redirect()->route('nguoi-choi.danh-sach');
     }
 
@@ -71,8 +71,8 @@ class NguoichoiController extends Controller
      */
     public function edit($id)
     {
-        $nguoichoi = NguoiChoi::find($id);
-        return view('nguoi-choi.form-them-nguoi-choi',compact('nguoichoi'));
+        $nguoiChoi = NguoiChoi::findOrFail($id);
+        return view('nguoi-choi.form_them', compact('nguoiChoi'));
     }
 
     /**
@@ -84,7 +84,17 @@ class NguoichoiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nguoichoi = NguoiChoi::findOrFail($id);
+        $nguoichoi->id = $request->id;
+        $nguoichoi->ten_dang_nhap = $request->ten_dang_nhap;
+        $nguoichoi->mat_khau = $request->mat_khau;
+        $nguoichoi->email = $request->email;
+        $nguoichoi->hinh_dai_dien = $request->hinh_dai_dien;
+        $nguoichoi->diem_cao_nhat = $request->diem_cao_nhat;
+        $nguoichoi->credit = $request->credit;
+        $nguoichoi->save();
+
+        return redirect()->route('nguoi-choi.danh-sach');
     }
 
     /**
@@ -95,8 +105,10 @@ class NguoichoiController extends Controller
      */
     public function destroy($id)
     {
-         $nguoichoi = NguoiChoi::find($id);
-        $nguoichoi->Delete();
-        return redirect() ->route('nguoi-choi.danh-sach');
+
+
+        $nguoichoi = NguoiChoi::find($id);
+        $nguoichoi->delete();
+        return redirect()->route('nguoi-choi.danh-sach');
     }
 }

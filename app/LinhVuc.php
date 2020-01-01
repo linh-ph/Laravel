@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LinhVuc extends Model
 {
-    //Lấy bản lĩnh vực 
-    protected $table = 'linhvuc';
+    protected $table = 'linh_vuc';
+    use SoftDeletes;
+    // 
+    public function cauHois()
+    {
+        return $this->hasMany('App\CauHoi');
+    }
+    public function LinhVuc(){
+        return $this->belongsTo('App\LinhVuc');
+    }
 }

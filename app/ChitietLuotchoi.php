@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ChitietLuotchoi extends Model
+class ChiTietLuotChoi extends Model
 {
-    //
+    protected $table="chi_tiet_luot_choi";
 }
